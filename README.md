@@ -1,6 +1,6 @@
 # Shopify Store Skills
 
-Four free [Agent Skills](https://agentskills.io) for Shopify store owners. Each one does a single store chore from start to finish and gives you something you can paste or import into Shopify without editing.
+Five free [Agent Skills](https://agentskills.io) for Shopify store owners. Each one does a single store chore from start to finish and gives you something you can paste or import into Shopify without editing.
 
 They work in Claude Code, claude.ai and any other agent that reads `SKILL.md` files. The helper scripts are plain Python 3 with no extra packages.
 
@@ -9,6 +9,7 @@ They work in Claude Code, claude.ai and any other agent that reads `SKILL.md` fi
 | [shopify-alt-text-writer](skills/shopify-alt-text-writer) | Your store URL, a product URL, or your product export CSV | Alt text for every product image, written while looking at the photo. Comes as a Shopify import CSV, a review sheet, and a paste-by-hand list for products with variant images |
 | [shopify-policy-checker](skills/shopify-policy-checker) | Your store URL | A scored audit of your refund, shipping, privacy, terms and contact policies. It flags missing items and contradictions with your FAQ and banners, and gives fixes you can paste |
 | [product-title-cleaner](skills/product-title-cleaner) | Your store, a collection URL, or a product export CSV | One consistent title pattern across your catalog, as a `URL handle,Title` import CSV (changed rows only). It never creates duplicate titles |
+| [agent-ready-quick-check](skills/agent-ready-quick-check) | Your store URL | A 6-check scorecard of how well AI shopping agents (ChatGPT, Perplexity, Gemini, Copilot, Claude) can read your store. Each check is compared with 99 Shopify stores we audited in October 2026 |
 | [review-reply-drafter](skills/review-reply-drafter) | Your reviews (pasted, CSV, or a public review page) | A reply for each review, matched to its tone. It never promises refunds you didn't approve, and it flags reviews that need you personally |
 
 ## Before and after
@@ -34,6 +35,12 @@ These come from real test runs on public Shopify stores. Product names are chang
 
 - **Found:** the refund window "usually" applies and depends on the payment processor. Product pages promise "no questions asked", but the policy excludes items that aren't in their original condition.
 - **Fix:** one clear window, written as text you can paste, with blanks only for facts the owner must fill in.
+
+**AI-agent quick check** (an outdoor-apparel store)
+
+- **Your store passes 2 of 6.** The median store in our 99-store study passes 3 of 6.
+- **Shipping & returns in structured data:** a gap. 0 of 5 product pages have it, and only 12% of study stores pass.
+- **Star rating:** a gap. It loads only by JavaScript, so agents reading the page don't see it.
 
 **Review reply**
 
@@ -69,6 +76,7 @@ Then ask in plain words, for example:
 - *"Write alt text for my product images"*
 - *"Clean up my product titles and give me an import CSV"*
 - *"Draft replies to these reviews"*
+- *"Is my store ready for AI shopping agents? mystore.com"*
 
 ## How we test
 
@@ -78,7 +86,7 @@ Nothing here posts or changes anything in your store. You review the output and 
 
 ## More skills
 
-These four are free under the MIT license. If they save you time, the paid **Store Ops Pack** for Shopify store owners has six more:
+These five are free under the MIT license. If they save you time, the paid **Store Ops Pack** for Shopify store owners has six more:
 - an AI-agent readiness audit for your store
 - a product description rewriter
 - an SEO fixer that does a full SEO pass, including collection pages

@@ -9,7 +9,7 @@
     {
       "name": "store-owner-free-skills",
       "source": "./",
-      "description": "Alt text writer, policy checker, product title cleaner and review reply drafter for Shopify stores.",
+      "description": "Alt text writer, policy checker, product title cleaner, review reply drafter and AI-agent readiness quick check for Shopify stores.",
       "category": "productivity",
       "tags": [
         "shopify",
@@ -18,7 +18,9 @@
         "alt-text",
         "policies",
         "product-titles",
-        "reviews"
+        "reviews",
+        "ai-agents",
+        "agentic-commerce"
       ]
     }
   ]
