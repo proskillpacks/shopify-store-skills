@@ -37,7 +37,7 @@ We tested it on 3 real review sets: public Judge.me reviews from a grooming bran
 
 ---
 
-Made by Kai Ventura. We tested this skill on real public reviews before release.
+Made by Pro Skill Packs. We tested this skill on real public reviews before release.
 
 The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com
 

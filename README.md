@@ -44,13 +44,13 @@ These come from real test runs on public Shopify stores. Product names are chang
 
 **Claude Code** (plugin marketplace):
 ```
-/plugin marketplace add kaiventurafounder/shopify-store-skills
-/plugin install store-owner-free-skills@kaiventura
+/plugin marketplace add proskillpacks/shopify-store-skills
+/plugin install store-owner-free-skills@proskillpacks
 ```
 
 **skills.sh** (Claude Code, Codex, Cursor, Gemini CLI and other SKILL.md agents):
 ```
-npx skills add kaiventurafounder/shopify-store-skills
+npx skills add proskillpacks/shopify-store-skills
 ```
 
 **claude.ai:**
@@ -60,7 +60,7 @@ npx skills add kaiventurafounder/shopify-store-skills
 
 **Manual:**
 ```
-git clone https://github.com/kaiventurafounder/shopify-store-skills
+git clone https://github.com/proskillpacks/shopify-store-skills
 cp -r shopify-store-skills/skills/* ~/.claude/skills/
 ```
 
@@ -88,7 +88,7 @@ These four are free under the MIT license. If they save you time, the paid **Sto
 
 Get it at https://proskillpacks.gumroad.com.
 
-Made by **Kai Ventura**. Updates on X: [@KaiVenturaBuild](https://x.com/KaiVenturaBuild). Found a wrong output? Open an issue with the input you used and what went wrong.
+Made by **Pro Skill Packs**. Updates on X: [@KaiVenturaBuild](https://x.com/KaiVenturaBuild). Found a wrong output? Open an issue with the input you used and what went wrong.
 
 Not affiliated with Shopify Inc. Shopify is a trademark of Shopify Inc.
 

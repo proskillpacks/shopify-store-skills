@@ -1,9 +1,9 @@
 {
-  "name": "kaiventura",
-  "description": "Free, tested Agent Skills for e-commerce store owners, from Kai Ventura.",
+  "name": "proskillpacks",
+  "description": "Free, tested Agent Skills for e-commerce store owners, from Pro Skill Packs.",
   "owner": {
-    "name": "Kai Ventura",
-    "url": "https://x.com/KaiVenturaBuild"
+    "name": "Pro Skill Packs",
+    "url": "https://proskillpacks.gumroad.com"
   },
   "plugins": [
     {

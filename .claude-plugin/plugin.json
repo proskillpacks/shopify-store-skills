@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "description": "Four free, tested Agent Skills for Shopify store owners: image alt text writer, store policy checker, product title cleaner, review reply drafter. Each outputs text or files you can paste or import into Shopify.",
   "author": {
-    "name": "Kai Ventura",
-    "url": "https://x.com/KaiVenturaBuild"
+    "name": "Pro Skill Packs",
+    "url": "https://proskillpacks.gumroad.com"
   },
-  "repository": "https://github.com/kaiventurafounder/shopify-store-skills",
+  "repository": "https://github.com/proskillpacks/shopify-store-skills",
   "license": "MIT",
   "keywords": [
     "shopify",

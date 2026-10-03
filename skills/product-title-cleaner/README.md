@@ -47,7 +47,7 @@ It changes only the product **title**. It doesn't write SEO titles, meta descrip
 
 ---
 
-Made by Kai Ventura. We tested this skill on real public Shopify stores before release.
+Made by Pro Skill Packs. We tested this skill on real public Shopify stores before release.
 
 The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com
 
