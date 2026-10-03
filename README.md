@@ -86,7 +86,7 @@ These four are free under the MIT license. If they save you time, the paid **Sto
 - chargeback responses
 - a BFCM campaign kit
 
-Get it at https://venturekaizen.gumroad.com.
+Get it at https://proskillpacks.gumroad.com.
 
 Made by **Kai Ventura**. Updates on X: [@KaiVenturaBuild](https://x.com/KaiVenturaBuild). Found a wrong output? Open an issue with the input you used and what went wrong.
 
