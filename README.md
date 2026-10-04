@@ -89,7 +89,9 @@ Nothing here posts or changes anything in your store. You review the output and 
 
 ## More skills
 
-These five are free under the MIT licence. If they save you time, the paid **Store Ops Pack** for Shopify store owners has six more:
+These five are free under the MIT licence. Pro Skill Packs also sells tested skills for other jobs: store operations, marketing and SEO, freelancer client work, short-term rental hosts. The full list is at https://proskillpacks.github.io and https://proskillpacks.gumroad.com, and each skill is a plain `SKILL.md` that works in any assistant that reads the format.
+
+For Shopify store owners, the paid **Store Ops Pack** has six more:
 - an AI-agent readiness audit for your store
 - a product description rewriter
 - an SEO fixer that does a full SEO pass, including collection pages
@@ -97,7 +99,7 @@ These five are free under the MIT licence. If they save you time, the paid **Sto
 - chargeback responses
 - a BFCM campaign kit
 
-Get it at https://proskillpacks.gumroad.com.
+The numbers behind the quick check are free to read: [the 100-store study](https://proskillpacks.github.io/study/) with its method and charts.
 
 Made by **Pro Skill Packs**. Updates on X: [@KaiVenturaBuild](https://x.com/KaiVenturaBuild). Found a wrong output? Open an issue with the input you used and what went wrong.
 
