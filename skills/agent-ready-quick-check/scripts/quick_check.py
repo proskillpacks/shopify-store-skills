@@ -5,13 +5,13 @@ Shopify store, compared with a 99-store benchmark (references/study-benchmarks.j
 
 Usage:  python3 quick_check.py <store-url> [--json]
 
-Read-only, standard library only, obeys robots.txt for its own user agent, waits
-1 second between requests (about 15 requests in total). No cart, no checkout.
+Read-only, standard library only. Every request sends the script's own user agent (never a browser
+one) and obeys robots.txt for it, read as RFC 9309 says: 4xx = no rules, a server error or no answer =
+the whole site is off limits. Waits 1 second between requests (about 15 in total). No cart, no checkout.
 """
 import gzip, html, json, os, re, statistics, sys, time, urllib.error, urllib.parse, urllib.request, zlib
 
 UA_OWN = "AgentReadyQuickCheck/1.0 (read-only; python-urllib)"
-UA_PAGE = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
 AI_LIVE = ["OAI-SearchBot", "ChatGPT-User", "PerplexityBot", "Perplexity-User", "Claude-SearchBot", "Claude-User", "Googlebot", "Bingbot"]
 REVIEW_APPS = {"Judge.me": r"jdgm-|judge\.me/", "Yotpo": r"yotpo\.com|shopify://apps/yotpo", "Okendo": r"okendo\.io|shopify://apps/okendo",
                "Loox": r"loox\.io", "Stamped": r"stamped\.io", "Junip": r"junip\.co", "Reviews.io": r"reviews\.io/",
@@ -64,7 +64,7 @@ def parse_robots(txt):
 
 def allowed(groups, agent, path):
     a = agent.lower()
-    named = [g for g in groups if any(ga != "*" and (a == ga or a.startswith(ga)) for ga in g["agents"])]
+    named = [g for g in groups if a in g["agents"]]   # RFC 9309: exact product token, case-insensitive
     rules = [r for g in (named or [g for g in groups if "*" in g["agents"]]) for r in g["rules"]]
     best, ok = -1, True
     for is_allow, pat in rules:
@@ -118,14 +118,24 @@ def check(store):
         store = "https://" + store
     sp = urllib.parse.urlsplit(store)
     base = f"{sp.scheme}://{sp.netloc}"
-    st, home, final = get(base + "/", UA_PAGE)
-    fs = urllib.parse.urlsplit(final or base)
-    if fs.netloc:
-        base = f"{fs.scheme}://{fs.netloc}"
     notes = []
-    rst, rtxt, _ = get(base + "/robots.txt")
-    groups = parse_robots(rtxt) if rst == 200 else []
+
+    def load_robots(b):
+        s_, t_, _ = get(b + "/robots.txt")
+        if s_ and 200 <= s_ < 300:
+            return s_, parse_robots(t_), False
+        if s_ and 400 <= s_ < 500:
+            return s_, [], False
+        return s_, [{"agents": ["*"], "rules": [(False, "/")]}], True   # RFC 9309: unreadable = keep out
+    rst, groups, closed = load_robots(base)
     may = lambda path: allowed(groups, "AgentReadyQuickCheck", path) if groups else True
+    st, home, final = get(base + "/") if may("/") else (None, "", base)
+    fs = urllib.parse.urlsplit(final or base)
+    if fs.netloc and f"{fs.scheme}://{fs.netloc}" != base:
+        base = f"{fs.scheme}://{fs.netloc}"
+        rst, groups, closed = load_robots(base)
+    if closed:
+        notes.append(f"robots.txt returned {rst or 'no answer'}. Under RFC 9309 that means the whole site is off limits, so this check read nothing else; AI crawlers treat the store the same way until robots.txt loads.")
 
     # 1. AI access
     blocked = [a for a in AI_LIVE if groups and not (allowed(groups, a, "/") and allowed(groups, a, "/products/x"))]
@@ -167,7 +177,7 @@ def check(store):
         if p["handle"] in seen or not may(f"/products/{p['handle']}"):
             continue
         seen.add(p["handle"])
-        s, h, _ = get(f"{base}/products/{p['handle']}", UA_PAGE)
+        s, h, _ = get(f"{base}/products/{p['handle']}")
         if s != 200:
             continue
         js, jb, _ = get(f"{cat_base}/products/{p['handle']}.json")
@@ -221,7 +231,7 @@ def check(store):
     alt_avg = round(sum(alts) / len(alts)) if alts else None
     P = bool(pages)
     results = {
-        "ai_access": {"pass": (not blocked) and llms, "blocked_agents": blocked, "llms_txt": llms, "robots_found": rst == 200},
+        "ai_access": {"pass": (not blocked) and llms, "blocked_agents": blocked, "llms_txt": llms, "robots_found": rst == 200, "robots_unreadable": closed},
         "ship_returns_schema": {"pass": any(p["ship_return_ld"] for p in pages) if P else None,
                                 "pages_with": sum(p["ship_return_ld"] for p in pages), "pages": len(pages)},
         "rating_schema": {"pass": rating == "schema_ok" if P else None, "status": rating, "apps": apps,

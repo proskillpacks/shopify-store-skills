@@ -25,7 +25,12 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-UA = "Mozilla/5.0 (compatible; shopify-alt-text-writer/1.0)"
+import os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import polite  # noqa: E402  honest user agent + robots.txt (RFC 9309) for every request
+
+TOOL = "shopify-alt-text-writer"
+UA = polite.user_agent(TOOL)
 MAX_ALT = 125  # screen readers handle longer, but ~125 chars is the common guidance
 
 VIEW_WORDS = [  # (filename token regex, human phrase)
@@ -55,20 +60,9 @@ def norm_base(arg):
 
 
 def get_json(url, tries=5):
-    delay = 2
-    for i in range(tries):
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                return json.loads(r.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 430, 503) and i < tries - 1:
-                time.sleep(delay); delay *= 2; continue
-            raise
-        except (urllib.error.URLError, TimeoutError):
-            if i < tries - 1:
-                time.sleep(delay); delay *= 2; continue
-            raise
+    """Every fetch goes through polite.fetch: honest user agent, robots.txt obeyed (RFC 9309)."""
+    body, _ = polite.fetch(url, TOOL, accept="application/json", tries=tries)
+    return json.loads(body)
 
 
 def _col(row, *names):
@@ -331,6 +325,7 @@ def cmd_thumbs(a):
         path = os.path.join(a.dir, re.sub(r"[^a-zA-Z0-9_-]", "_", i["key"]) + ext)
         if not os.path.exists(path):
             try:
+                polite.check(i["thumb"], TOOL)   # robots.txt of the image host (Shopify's CDN)
                 req = urllib.request.Request(i["thumb"], headers={"User-Agent": UA})
                 with urllib.request.urlopen(req, timeout=30) as r, open(path, "wb") as f:
                     f.write(r.read())

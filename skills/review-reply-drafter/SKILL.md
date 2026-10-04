@@ -9,6 +9,9 @@ Write replies the owner can paste straight into their review app. Each one shoul
 
 **Input:** the reviews, in any format. **Optional:** support email, approved remedies, brand voice, sign-off name. Don't ask for these. The defaults are: voice "we", no name, `[support email]`, and **no approved remedies**. **If the owner gives a support email (or any other value), write it literally in every reply. A placeholder must never appear for a value you were given.**
 
+## Reading pages
+Work from what the user pastes. If they give a public review page instead, you may read it with your assistant's own web-fetch tool (it identifies itself). Don't fetch it any other way (no curl, no code of your own, no browser user agent), and if the page can't be read, ask the user to paste the reviews.
+
 ## Steps
 1. **Parse** each review (name, ★, date, product, text) and number them 1..N in the original order.
 2. **Classify** each one: praise · mixed · product-quality · not-received / late · damaged / wrong item · preference (scent, fit, taste) · price · subscription · stock-out · service-complaint · **rating-mismatch** (e.g. 1★ with glowing text) · **not-a-review** (a question, or just a product name) · **duplicate** (the same text posted on several products, so reply once and mark the others "same as #N").

@@ -1,7 +1,7 @@
 {
   "name": "store-owner-free-skills",
   "displayName": "Store Owner Free Skills (for Shopify)",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Five free, tested Agent Skills for Shopify store owners: image alt text writer, store policy checker, product title cleaner, review reply drafter, AI-agent readiness quick check. Each outputs text or files you can paste or import into Shopify, or a short diagnostic scorecard.",
   "author": {
     "name": "Pro Skill Packs",

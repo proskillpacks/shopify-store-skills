@@ -12,6 +12,10 @@ They work with any AI assistant that reads `SKILL.md` files: Claude Code, claude
 | [agent-ready-quick-check](skills/agent-ready-quick-check) | Your store URL | A 6-check scorecard of how well AI shopping agents (ChatGPT, Perplexity, Gemini, Copilot, Claude) can read your store. Each check is compared with 99 Shopify stores we audited in October 2026 |
 | [review-reply-drafter](skills/review-reply-drafter) | Your reviews (pasted, CSV, or a public review page) | A reply for each review, matched to its tone. It never promises refunds you didn't approve, and it flags reviews that need you personally |
 
+
+## Use them without installing anything
+The [`prompts/`](prompts) folder has a paste-in version of each skill. Copy one into a new chat in ChatGPT, Claude or Gemini and add your own text where it says to. The prompt versions have no scripts or web access, so they ask you to paste in the page text the installed skill would fetch for itself. We test them in Claude.
+
 ## Before and after
 
 These come from real test runs on public Shopify stores. Product names are changed or removed.

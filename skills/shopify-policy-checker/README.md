@@ -54,6 +54,6 @@ From one run on a public men's grooming store on 2026-10-03. In the real report,
 
 Made by Pro Skill Packs. We tested this skill on real public Shopify stores before release.
 
-The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com
+The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com/l/store-ops-pack
 
 Not affiliated with or endorsed by Shopify Inc.

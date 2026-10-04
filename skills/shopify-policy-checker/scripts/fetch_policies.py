@@ -21,7 +21,12 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-UA = "Mozilla/5.0 (compatible; shopify-policy-checker/1.0)"
+import os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import polite  # noqa: E402  honest user agent + robots.txt (RFC 9309) for every request
+
+TOOL = "shopify-policy-checker"
+UA = polite.user_agent(TOOL)
 POLICIES = ["refund-policy", "shipping-policy", "privacy-policy", "terms-of-service",
             "contact-information", "legal-notice", "subscription-policy"]
 PAGES = ["shipping", "shipping-policy", "shipping-information", "shipping-returns", "shipping-and-returns",
@@ -32,22 +37,20 @@ CLAIM_RE = re.compile(r"(free (shipping|delivery|returns?)|ships? (in|within)|de
                       r"business days|dispatch|same[- ]day|next[- ]day|duties|customs)", re.I)
 
 
+SKIPPED = []
+
+
 def fetch(url, accept="text/html"):
-    delay = 2
-    for i in range(4):
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                return r.geturl(), r.read().decode("utf-8", "replace")
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 430, 503) and i < 3:
-                time.sleep(delay); delay *= 2; continue
-            return None, None
-        except Exception:
-            if i < 3:
-                time.sleep(delay); delay *= 2; continue
-            return None, None
-    return None, None
+    """Every fetch goes through polite.fetch: honest user agent, robots.txt obeyed (RFC 9309).
+    --owner skips the robots.txt check only (the user says it is their store)."""
+    try:
+        body, final = polite.fetch(url, TOOL, accept=accept, tries=4, owner="--owner" in sys.argv)
+        return final, body
+    except polite.RobotsDisallowed as e:
+        SKIPPED.append(str(e))
+        return None, None
+    except Exception:
+        return None, None
 
 
 def html_to_text(h):
@@ -97,6 +100,7 @@ def main():
     ap.add_argument("store")
     ap.add_argument("-o", "--out", default="policies.md")
     ap.add_argument("--pages", help="extra /pages/ handles to include, comma-separated")
+    ap.add_argument("--owner", action="store_true", help="the user says this is their store: skip the robots.txt check only")
     a = ap.parse_args()
     s = a.store.strip()
     if not s.startswith("http"):
@@ -165,6 +169,11 @@ def main():
         out.append(f"\n### {name}")
         out.extend(f"- {x}" for x in c) if c else out.append("(none found)")
 
+    if SKIPPED:
+        out.append("\n## Not fetched (robots.txt)")
+        out.extend("- " + x for x in dict.fromkeys(SKIPPED))
+        out.append("Don't fetch these pages any other way. If the user says this is their store, run again with --owner; otherwise ask them to paste the text.")
+        summary.append(f"- not fetched because of robots.txt: {len(set(SKIPPED))} (see the end of the file)")
     out.insert(3, "## Summary\n" + "\n".join(summary) + "\n")
     open(a.out, "w", encoding="utf-8").write("\n".join(out))
     print("\n".join(summary))

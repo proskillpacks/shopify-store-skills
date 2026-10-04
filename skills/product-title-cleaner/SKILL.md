@@ -11,6 +11,12 @@ Scope: this skill fixes the **product title** (the H1 on the product page, and w
 
 Don't ask questions first. Start from whatever the user gave you: a store domain, a `/collections/<handle>` URL (only that collection), a products.json file, or a product export CSV (Products > Export).
 
+## Reading the store: only through the script
+- **Fetch store pages only with `scripts/titles.py`.** Don't fetch them any other way: no curl or wget, no code of your own, no browser user agent and no retries under another name. The script sends an honest user agent and obeys the store's robots.txt (RFC 9309).
+- **If the script prints `NOT FETCHED`** (robots.txt does not allow the page, or robots.txt itself could not be read), stop for that page. Otherwise ask the user to paste the text, and say why.
+- **If the script returns an error or leaves a fact out**, say "not found by the script" and use a placeholder or ask the user to paste it. Never write a fetcher to get round it.
+- **No shell at all?** Your assistant's own web-fetch tool may read the same public pages the script would (it identifies itself). Never use it for a page the script reported as not fetched, and don't use it to get round an error.
+
 ## Step 1. Load and analyse the catalog
 
 **With a shell:**

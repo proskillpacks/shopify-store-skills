@@ -7,6 +7,12 @@ description: Free 2-minute check of how well AI shopping agents (ChatGPT, Perple
 
 Give the owner an honest, 2-minute picture: *what can an AI shopping agent read on this store, and how does that compare with other Shopify stores?* This skill **diagnoses**. It does not write a fix plan.
 
+## Reading the store: only through the script
+- **Fetch store pages only with `scripts/quick_check.py`.** Don't fetch them any other way: no curl or wget, no code of your own, no browser user agent and no retries under another name. The script sends an honest user agent and obeys the store's robots.txt (RFC 9309).
+- **If the script prints `NOT FETCHED`** (robots.txt does not allow the page, or robots.txt itself could not be read), stop for that page. Otherwise ask the user to paste the text, and say why.
+- **If the script returns an error or leaves a fact out**, say "not found by the script" and use a placeholder or ask the user to paste it. Never write a fetcher to get round it.
+- **No shell at all?** Say you can't run the check and stop.
+
 ## Step 1: Run the check
 ```bash
 python3 <this-skill-dir>/scripts/quick_check.py <store-url>

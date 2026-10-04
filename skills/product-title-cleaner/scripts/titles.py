@@ -23,7 +23,12 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-UA = "Mozilla/5.0 (compatible; product-title-cleaner/1.0)"
+import os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import polite  # noqa: E402  honest user agent + robots.txt (RFC 9309) for every request
+
+TOOL = "product-title-cleaner"
+UA = polite.user_agent(TOOL)
 SEPARATORS = [" - ", " – ", " — ", " | ", " / ", ", ", ": ", " · "]
 PROMO = re.compile(r"\b(new|sale|hot|best ?seller|free shipping|limited|last call|clearance|% ?off|deal|"
                    r"discount|gift idea|must[- ]have|bogo)\b", re.I)
@@ -31,20 +36,9 @@ NOISE_TAG = re.compile(r"(::|=>|^yblock|^ygroup|^oos|^loop|^wc |^_|^shoprunner|^
 
 
 def get_json(url, tries=5):
-    delay = 2
-    for i in range(tries):
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-            with urllib.request.urlopen(req, timeout=30) as r:
-                return json.loads(r.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 430, 503) and i < tries - 1:
-                time.sleep(delay); delay *= 2; continue
-            raise
-        except (urllib.error.URLError, TimeoutError):
-            if i < tries - 1:
-                time.sleep(delay); delay *= 2; continue
-            raise
+    """Every fetch goes through polite.fetch: honest user agent, robots.txt obeyed (RFC 9309)."""
+    body, _ = polite.fetch(url, TOOL, accept="application/json", tries=tries)
+    return json.loads(body)
 
 
 def from_store(arg, max_products):

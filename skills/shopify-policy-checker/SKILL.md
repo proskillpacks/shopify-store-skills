@@ -9,6 +9,12 @@ Goal: in one pass, tell the store owner what's missing, what contradicts itself,
 
 Don't ask questions first. If you have a store URL or policy text, start. Make sensible assumptions and state them (e.g. "Assumed you sell to the US and EU because prices show USD and the privacy policy mentions GDPR").
 
+## Reading the store: only through the script
+- **Fetch store pages only with `scripts/fetch_policies.py`.** Don't fetch them any other way: no curl or wget, no code of your own, no browser user agent and no retries under another name. The script sends an honest user agent and obeys the store's robots.txt (RFC 9309).
+- **If the script prints `NOT FETCHED`** (robots.txt does not allow the page, or robots.txt itself could not be read), stop for that page. If the user says it is their store, run it again with `--owner` (it skips the robots.txt check, nothing else). Otherwise ask the user to paste the text, and say why.
+- **If the script returns an error or leaves a fact out**, say "not found by the script" and use a placeholder or ask the user to paste it. Never write a fetcher to get round it.
+- **No shell at all?** Your assistant's own web-fetch tool may read the same public pages the script would (it identifies itself). Never use it for a page the script reported as not fetched, and don't use it to get round an error.
+
 ## Step 1. Collect the text
 
 **With a shell** (preferred, gets everything in one go):
