@@ -36,9 +36,23 @@ Give it a store URL, a collection URL, or a product export CSV.
 On one 147-product coffee and merch catalogue it changed 13 titles and left 134 alone.
 
 ## Install
+<!-- install:begin SKILL {"FOLDER": "product-title-cleaner"} -->
+Any assistant that reads the open SKILL.md format works. Copy the `product-title-cleaner/` folder into `.agents/skills/` (one project) or `~/.agents/skills/` (all projects).
 
-- **Claude Code:** copy this folder to `~/.claude/skills/product-title-cleaner/`, then ask: *"Clean up the product titles on mystore.com and give me an import CSV"*.
-- **claude.ai:** zip this folder, then go to Settings > Capabilities > Skills > Upload. Upload your product export CSV with the request.
+| Tool | Skills folder |
+|---|---|
+| Claude Code | `~/.claude/skills/` (project: `.claude/skills/`) |
+| Codex | `~/.agents/skills/` (project: `.agents/skills/`) |
+| Gemini CLI | `~/.gemini/skills/` or `~/.agents/skills/` |
+| claude.ai (web and desktop apps) | zip the folder, then Settings > Capabilities > Skills > Upload skill |
+| Cursor, Copilot, others | see your tool's docs: https://agentskills.io/clients |
+
+**No skills support?** Paste `prompts/product-title-cleaner.md` from the repo into ChatGPT or any chatbot.
+<!-- install:end -->
+
+Then ask: *"Clean up the product titles on mystore.com and give me an import CSV"*
+
+- In claude.ai: Upload your product export CSV with the request.
 - The helper script is Python 3, standard library only.
 
 ## Scope

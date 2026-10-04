@@ -2,7 +2,7 @@
 
 Five free [Agent Skills](https://agentskills.io) for Shopify store owners. Each one does a single store chore from start to finish and gives you something you can paste or import into Shopify without editing.
 
-They work with any AI assistant that reads `SKILL.md` files: Claude Code, claude.ai, OpenAI Codex, Gemini CLI, Cursor, GitHub Copilot and others. The helper scripts are plain Python 3 with no extra packages.
+They work with any AI assistant that reads `SKILL.md` files: Claude Code, OpenAI Codex, Gemini CLI, Cursor, GitHub Copilot and others (including the claude.ai apps). The helper scripts are plain Python 3 with no extra packages.
 
 | Skill | Give it | You get |
 |---|---|---|
@@ -52,28 +52,26 @@ These come from real test runs on public Shopify stores. Product names are chang
 - **Reply:** "[Name], we're sorry your cologne arrived with about a third of it leaked into the packaging. Glad the scent itself still won you over. Email [support email] with your order number and a photo, and we'll [REMEDY: replacement / refund / store credit; owner to choose]."
 
 ## Install
+<!-- install:begin REPO {} -->
+Any assistant that reads the open SKILL.md format works.
 
-**Claude Code** (plugin marketplace):
-```
-/plugin marketplace add proskillpacks/shopify-store-skills
-/plugin install store-owner-free-skills@proskillpacks
-```
-
-**skills.sh** (Claude Code, Codex, Cursor, Gemini CLI and other SKILL.md agents):
 ```
 npx skills add proskillpacks/shopify-store-skills
 ```
 
-**claude.ai:**
-1. Download one folder from `skills/` and zip it, so the zip contains the folder itself.
-2. Go to Settings > Capabilities > Skills > Upload.
-3. For the alt text writer and the title cleaner, attach your product export CSV (Shopify admin > Products > Export) to your request.
+Or copy the folders from `skills/` into `.agents/skills/` (one project) or `~/.agents/skills/` (all projects).
 
-**Manual:**
-```
-git clone https://github.com/proskillpacks/shopify-store-skills
-cp -r shopify-store-skills/skills/* ~/.claude/skills/
-```
+| Tool | Skills folder |
+|---|---|
+| Claude Code | `~/.claude/skills/` (project: `.claude/skills/`), or the plugin: `/plugin marketplace add proskillpacks/shopify-store-skills` then `/plugin install store-owner-free-skills@proskillpacks` |
+| Codex | `~/.agents/skills/` (project: `.agents/skills/`) |
+| Gemini CLI | `~/.gemini/skills/` or `~/.agents/skills/` |
+| claude.ai (web and desktop apps) | zip one folder from `skills/` (the zip must contain the folder itself), then Settings > Capabilities > Skills > Upload skill |
+| Cursor, Copilot, others | see your tool's docs: https://agentskills.io/clients |
+
+**No skills support?** Paste a file from [`prompts/`](prompts) into ChatGPT or any chatbot.
+
+For the alt text writer and the title cleaner, attach your product export CSV (Shopify admin > Products > Export) to your request.
 
 Then ask in plain words, for example:
 - *"Check the store policies on mystore.com"*
@@ -81,6 +79,7 @@ Then ask in plain words, for example:
 - *"Clean up my product titles and give me an import CSV"*
 - *"Draft replies to these reviews"*
 - *"Is my store ready for AI shopping agents? mystore.com"*
+<!-- install:end -->
 
 ## How we test
 

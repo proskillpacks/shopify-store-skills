@@ -1,6 +1,6 @@
 ---
 name: shopify-alt-text-writer
-description: Writes accessible, SEO-aware alt text for Shopify product images and outputs a CSV you can import into Shopify (plus a review sheet). Works from a store domain, a product URL, or a Shopify product export CSV (works offline, e.g. on claude.ai). It reads the product title, variant and image position, looks at the actual photos when it can, keeps good existing alt text, and flags products where a CSV import is risky. Use when someone asks to "write alt text for my Shopify images", "fix missing alt text", "add image alt tags to my products", "accessibility for product photos", "image SEO for my store", or pastes a myshopify / store URL and mentions alt text or images.
+description: Writes accessible, SEO-aware alt text for Shopify product images and outputs a CSV you can import into Shopify (plus a review sheet). Works from a store domain, a product URL, or a Shopify product export CSV (works offline, e.g. in a chat with no web access). It reads the product title, variant and image position, looks at the actual photos when it can, keeps good existing alt text, and flags products where a CSV import is risky. Use when someone asks to "write alt text for my Shopify images", "fix missing alt text", "add image alt tags to my products", "accessibility for product photos", "image SEO for my store", or pastes a myshopify / store URL and mentions alt text or images.
 ---
 
 # Shopify alt text writer
@@ -17,13 +17,13 @@ Default behaviour: don't ask questions first. If the user gave a store URL, a pr
 
 ## Step 1. Get the image list
 
-**If you can run Python** (Claude Code, claude.ai code execution, or any agent with a shell), use the helper. It needs only the standard library:
+**If you can run Python** (any agent with a shell or code execution), use the helper. It needs only the standard library:
 
 ```bash
 python3 <skill-dir>/scripts/alt_text.py fetch <store-domain | product-URL | products_export.csv | products.json> -o work.json [--max-products N] [--handles h1,h2]
 ```
 
-**If the user uploaded a product export CSV** (Shopify admin > Products > Export), use that file. It's the best input: it already contains every image URL, its position, the existing alt text, and which variant uses which image. Both the older headers (`Handle`, `Image Src`, `Image Alt Text`, `Variant Image`) and the current ones (`URL handle`, `Product image URL`, `Image alt text`, `Variant image URL`) work. On claude.ai the sandbox often has no internet, so the `thumbs` step can't download photos (it prints `NO-IMAGE`). In that case, write from the product data (title, variant, filename, position, and any useful facts in the existing alt text). Say clearly that these weren't checked against the photos, and offer to look at a few key photos if the user uploads them. Don't stop to ask first.
+**If the user uploaded a product export CSV** (Shopify admin > Products > Export), use that file. It's the best input: it already contains every image URL, its position, the existing alt text, and which variant uses which image. Both the older headers (`Handle`, `Image Src`, `Image Alt Text`, `Variant Image`) and the current ones (`URL handle`, `Product image URL`, `Image alt text`, `Variant image URL`) work. In a hosted chat sandbox the code environment often has no internet, so the `thumbs` step can't download photos (it prints `NO-IMAGE`). In that case, write from the product data (title, variant, filename, position, and any useful facts in the existing alt text). Say clearly that these weren't checked against the photos, and offer to look at a few key photos if the user uploads them. Don't stop to ask first.
 
 - It pages through `/products.json`. That endpoint does **not** include existing alt text. For 60 products or fewer, `fetch` reads `/products/<handle>.json` for each product to get it. For bigger catalogs, **don't** use `--check-existing`, which is slow. The `thumbs` step checks existing alt text product by product, only for the batch you're working on. Never assume images have no alt text just because `/products.json` doesn't show any.
 - Each image in `work.json` has: handle, title, vendor, type, options, position, src, a `thumb` URL (400px), `variant_label` (the colour or style the image is linked to), `view_hint` (taken from the filename, e.g. LEFT, SOLE, DETAIL), `existing_alt` and a rule-based `draft_alt`.

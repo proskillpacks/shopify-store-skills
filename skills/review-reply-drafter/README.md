@@ -9,8 +9,19 @@ A free Agent Skill that drafts replies to your store's reviews. Paste in reviews
 - **4 or more reviews** come back as one table, followed by a "Needs a human" list and every placeholder you need to fill in.
 
 ## Install
-- **Claude Code:** copy the `review-reply-drafter/` folder into `~/.claude/skills/`.
-- **claude.ai:** zip the folder and upload it in Settings > Capabilities > Skills.
+<!-- install:begin SKILL {"FOLDER": "review-reply-drafter"} -->
+Any assistant that reads the open SKILL.md format works. Copy the `review-reply-drafter/` folder into `.agents/skills/` (one project) or `~/.agents/skills/` (all projects).
+
+| Tool | Skills folder |
+|---|---|
+| Claude Code | `~/.claude/skills/` (project: `.claude/skills/`) |
+| Codex | `~/.agents/skills/` (project: `.agents/skills/`) |
+| Gemini CLI | `~/.gemini/skills/` or `~/.agents/skills/` |
+| claude.ai (web and desktop apps) | zip the folder, then Settings > Capabilities > Skills > Upload skill |
+| Cursor, Copilot, others | see your tool's docs: https://agentskills.io/clients |
+
+**No skills support?** Paste `prompts/review-reply-drafter.md` from the repo into ChatGPT or any chatbot.
+<!-- install:end -->
 
 Then ask: *"Draft replies to these Judge.me reviews"* and paste them. To let it offer a remedy, say so: *"we offer a free replacement for anything that broke within 30 days, support email is help@yourstore.com"*. It uses the remedy only where it applies.
 

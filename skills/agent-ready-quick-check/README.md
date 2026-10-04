@@ -17,8 +17,22 @@ Each result is shown next to the share of stores in our October 2026 study that 
 It's a diagnosis: what's missing and why it matters to an agent. It doesn't give a fix plan.
 
 ## Install
-- **Claude Code:** copy the `agent-ready-quick-check/` folder into `~/.claude/skills/`. It needs `python3`, with no extra packages.
-- **claude.ai:** zip the folder and upload it in Settings > Capabilities > Skills (code execution must be on).
+<!-- install:begin SKILL {"FOLDER": "agent-ready-quick-check"} -->
+Any assistant that reads the open SKILL.md format works. Copy the `agent-ready-quick-check/` folder into `.agents/skills/` (one project) or `~/.agents/skills/` (all projects).
+
+| Tool | Skills folder |
+|---|---|
+| Claude Code | `~/.claude/skills/` (project: `.claude/skills/`) |
+| Codex | `~/.agents/skills/` (project: `.agents/skills/`) |
+| Gemini CLI | `~/.gemini/skills/` or `~/.agents/skills/` |
+| claude.ai (web and desktop apps) | zip the folder, then Settings > Capabilities > Skills > Upload skill |
+| Cursor, Copilot, others | see your tool's docs: https://agentskills.io/clients |
+
+**No skills support?** Paste `prompts/agent-ready-quick-check.md` from the repo into ChatGPT or any chatbot.
+<!-- install:end -->
+
+- It needs `python3`, with no extra packages.
+- In claude.ai: Code execution must be on.
 
 Then ask: *"Is my store ready for AI shopping agents? mystore.com"*
 

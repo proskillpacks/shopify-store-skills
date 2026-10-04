@@ -32,9 +32,23 @@ Give it a store URL, a product URL, or your product export CSV (Products > Expor
 We checked each "after" against the actual photo.
 
 ## Install
+<!-- install:begin SKILL {"FOLDER": "shopify-alt-text-writer"} -->
+Any assistant that reads the open SKILL.md format works. Copy the `shopify-alt-text-writer/` folder into `.agents/skills/` (one project) or `~/.agents/skills/` (all projects).
 
-- **Claude Code:** copy this folder to `~/.claude/skills/shopify-alt-text-writer/`, then ask: *"Write alt text for the product images on mystore.com"*.
-- **claude.ai:** zip this folder, then go to Settings > Capabilities > Skills > Upload. Then upload your product export CSV with the request. If the sandbox can't download your photos, it writes from your product data and tells you so.
+| Tool | Skills folder |
+|---|---|
+| Claude Code | `~/.claude/skills/` (project: `.claude/skills/`) |
+| Codex | `~/.agents/skills/` (project: `.agents/skills/`) |
+| Gemini CLI | `~/.gemini/skills/` or `~/.agents/skills/` |
+| claude.ai (web and desktop apps) | zip the folder, then Settings > Capabilities > Skills > Upload skill |
+| Cursor, Copilot, others | see your tool's docs: https://agentskills.io/clients |
+
+**No skills support?** Paste `prompts/shopify-alt-text-writer.md` from the repo into ChatGPT or any chatbot.
+<!-- install:end -->
+
+Then ask: *"Write alt text for the product images on mystore.com"*
+
+- In claude.ai: Upload your product export CSV with the request. If the sandbox can't download your photos, it writes from your product data and tells you so.
 - The helper script is Python 3, standard library only. Without a shell, the skill fetches product data and photos directly, for up to about 10 products per run.
 
 ## Limits

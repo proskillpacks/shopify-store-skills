@@ -37,9 +37,22 @@ From one run on a public men's grooming store on 2026-10-03. In the real report,
 
 
 ## Install
+<!-- install:begin SKILL {"FOLDER": "shopify-policy-checker"} -->
+Any assistant that reads the open SKILL.md format works. Copy the `shopify-policy-checker/` folder into `.agents/skills/` (one project) or `~/.agents/skills/` (all projects).
 
-- **Claude Code:** copy this folder to `~/.claude/skills/shopify-policy-checker/`, then ask: *"Check the store policies on mystore.com"*.
-- **claude.ai:** zip this folder, then go to Settings > Capabilities > Skills > Upload.
+| Tool | Skills folder |
+|---|---|
+| Claude Code | `~/.claude/skills/` (project: `.claude/skills/`) |
+| Codex | `~/.agents/skills/` (project: `.agents/skills/`) |
+| Gemini CLI | `~/.gemini/skills/` or `~/.agents/skills/` |
+| claude.ai (web and desktop apps) | zip the folder, then Settings > Capabilities > Skills > Upload skill |
+| Cursor, Copilot, others | see your tool's docs: https://agentskills.io/clients |
+
+**No skills support?** Paste `prompts/shopify-policy-checker.md` from the repo into ChatGPT or any chatbot.
+<!-- install:end -->
+
+Then ask: *"Check the store policies on mystore.com"*
+
 - Works best where the agent can run Python 3 (standard library only). Without a shell, it falls back to fetching each policy page.
 
 ## How it works
