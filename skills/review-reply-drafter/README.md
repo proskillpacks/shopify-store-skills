@@ -20,7 +20,7 @@ A 2★ Judge.me review of a men's cologne from a grooming brand:
 
 > **Before:** "…1/3 of the product had leaked into the packaging during shipping. Good product. Poor packaging." *(no store reply)*
 
-> **After (skill output, product name replaced with [Product]):** "A third of the cologne ending up in the packaging is a rough way to meet [Product], and we're sorry the shipping overshadowed a scent you liked. Contact us at [support email] and we'll [REMEDY: replacement / refund / store credit — owner to choose]."
+> **After (skill output, product name replaced with [Product]):** "A third of the cologne ending up in the packaging is a rough way to meet [Product], and we're sorry the shipping overshadowed a scent you liked. Contact us at [support email] and we'll [REMEDY: replacement / refund / store credit; owner to choose]."
 
 In the same 14-review batch, the skill also:
 - caught a 1★ review with glowing text as a probable mis-tap, without asking publicly for a rating change;
@@ -33,7 +33,7 @@ In the same 14-review batch, the skill also:
 - Ask a Trustpilot reviewer to change their rating.
 
 ## Tested
-We tested it on 3 real review sets: public Judge.me reviews from a grooming brand and a jewellery brand, and the Trustpilot page of a coffee brand. Every run was scored against a written rubric, and the final runs scored 9, 9.5 and 9 out of 10. Test logs: `products/free-skills/tests/review-reply-drafter/`.
+We tested it on 3 real review sets: public Judge.me reviews from a grooming brand and a jewellery brand, and the Trustpilot page of a coffee brand. Every run was scored against a written rubric, and the final runs scored 9, 9.5 and 9 out of 10. The test logs are kept internally.
 
 ---
 
@@ -41,4 +41,4 @@ Made by Pro Skill Packs. We tested this skill on real public reviews before rele
 
 The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com
 
-Not affiliated with Shopify Inc.
+Not affiliated with or endorsed by Shopify Inc.

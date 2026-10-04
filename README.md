@@ -8,7 +8,7 @@ They work in Claude Code, claude.ai and any other agent that reads `SKILL.md` fi
 |---|---|---|
 | [shopify-alt-text-writer](skills/shopify-alt-text-writer) | Your store URL, a product URL, or your product export CSV | Alt text for every product image, written while looking at the photo. Comes as a Shopify import CSV, a review sheet, and a paste-by-hand list for products with variant images |
 | [shopify-policy-checker](skills/shopify-policy-checker) | Your store URL | A scored audit of your refund, shipping, privacy, terms and contact policies. It flags missing items and contradictions with your FAQ and banners, and gives fixes you can paste |
-| [product-title-cleaner](skills/product-title-cleaner) | Your store, a collection URL, or a product export CSV | One consistent title pattern across your catalog, as a `URL handle,Title` import CSV (changed rows only). It never creates duplicate titles |
+| [product-title-cleaner](skills/product-title-cleaner) | Your store, a collection URL, or a product export CSV | One consistent title pattern across your catalogue, as a `URL handle,Title` import CSV (changed rows only). It never creates duplicate titles |
 | [agent-ready-quick-check](skills/agent-ready-quick-check) | Your store URL | A 6-check scorecard of how well AI shopping agents (ChatGPT, Perplexity, Gemini, Copilot, Claude) can read your store. Each check is compared with 99 Shopify stores we audited in October 2026 |
 | [review-reply-drafter](skills/review-reply-drafter) | Your reviews (pasted, CSV, or a public review page) | A reply for each review, matched to its tone. It never promises refunds you didn't approve, and it flags reviews that need you personally |
 
@@ -45,7 +45,7 @@ These come from real test runs on public Shopify stores. Product names are chang
 **Review reply**
 
 - **Review:** "…1/3 of the product had leaked into the packaging during shipping. Good product. Poor packaging."
-- **Reply:** "[Name], we're sorry your cologne arrived with about a third of it leaked into the packaging. Glad the scent itself still won you over. Email [support email] with your order number and a photo, and we'll [REMEDY: replacement / refund / store credit — owner to choose]."
+- **Reply:** "[Name], we're sorry your cologne arrived with about a third of it leaked into the packaging. Glad the scent itself still won you over. Email [support email] with your order number and a photo, and we'll [REMEDY: replacement / refund / store credit; owner to choose]."
 
 ## Install
 
@@ -86,7 +86,7 @@ Nothing here posts or changes anything in your store. You review the output and 
 
 ## More skills
 
-These five are free under the MIT license. If they save you time, the paid **Store Ops Pack** for Shopify store owners has six more:
+These five are free under the MIT licence. If they save you time, the paid **Store Ops Pack** for Shopify store owners has six more:
 - an AI-agent readiness audit for your store
 - a product description rewriter
 - an SEO fixer that does a full SEO pass, including collection pages
@@ -98,7 +98,7 @@ Get it at https://proskillpacks.gumroad.com.
 
 Made by **Pro Skill Packs**. Updates on X: [@KaiVenturaBuild](https://x.com/KaiVenturaBuild). Found a wrong output? Open an issue with the input you used and what went wrong.
 
-Not affiliated with Shopify Inc. Shopify is a trademark of Shopify Inc.
+Not affiliated with or endorsed by Shopify Inc. Shopify is a trademark of Shopify Inc.
 
 ## License
 

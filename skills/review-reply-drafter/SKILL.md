@@ -29,7 +29,7 @@ Write replies the owner can paste straight into their review app. Each one shoul
 **Unhappy:**
 1. Acknowledge the problem in their words.
 2. Apologise for the *experience*, not the cause.
-3. Give **one** next step with a private channel: "Email [support email] with your order number and we'll [REMEDY: replacement / refund / store credit — owner to choose]."
+3. Give **one** next step with a private channel: "Email [support email] with your order number and we'll [REMEDY: replacement / refund / store credit; owner to choose]."
 - Never ask for an order number, address or photos in public. Ask in the private channel.
 - **No liability:** never "our product caused", "defect", "our fault", "known issue". For health complaints, never restate causation: write "didn't agree with you", not "gave you a headache".
 - **No unapproved remedies:** no refund, replacement, credit or discount unless the owner approved it. Use an approved remedy only within its stated scope (e.g. "broke within 30 days"), and phrase it conditionally if you can't tell.
@@ -40,7 +40,7 @@ Write replies the owner can paste straight into their review app. Each one shoul
 **Platforms:** replies on Judge.me, Yotpo and Okendo are public under the review, so future buyers read them too. Google: keep under about 500 characters, with no personal data. Trustpilot: never ask the reviewer to change their rating or offer anything for editing it.
 
 ## Placeholders (use these exact strings, always inside a sentence)
-`[support email]` · `[REMEDY: replacement / refund / store credit — owner to choose]` · `[exchange/return option]` · `[restock date]` · `[direct contact: name/email of a person]` · `[answer: …]`
+`[support email]` · `[REMEDY: replacement / refund / store credit; owner to choose]` · `[exchange/return option]` · `[restock date]` · `[direct contact: name/email of a person]` · `[answer: …]`
 If the owner supplied a value, use the real value. Flagged reviews never get `[REMEDY]`.
 
 ## Output

@@ -19,7 +19,7 @@ Give it a store URL, a product URL, or your product export CSV (Products > Expor
 - `<store>-alt-text-review.csv` shows old vs new for every image.
 - `<store>-alt-text-paste-by-hand.csv` for products with variant images (where the photo changes per colour), where pasting in the admin is safer than a CSV import.
 - Safe-apply steps: back up first, then test on one product.
-- Big catalogs run in batches of about 40 images. It tells you exactly how far it got.
+- Big catalogues run in batches of about 40 images. It tells you exactly how far it got.
 
 ## Before / after (real tests, 2026-10-03; store and product names removed)
 
@@ -48,4 +48,4 @@ Made by Pro Skill Packs. We tested this skill on real public Shopify stores befo
 
 The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com
 
-Not affiliated with Shopify Inc.
+Not affiliated with or endorsed by Shopify Inc.

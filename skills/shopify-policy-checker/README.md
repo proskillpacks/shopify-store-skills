@@ -56,4 +56,4 @@ Made by Pro Skill Packs. We tested this skill on real public Shopify stores befo
 
 The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com
 
-Not affiliated with Shopify Inc.
+Not affiliated with or endorsed by Shopify Inc.

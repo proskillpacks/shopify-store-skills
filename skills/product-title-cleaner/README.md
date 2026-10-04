@@ -1,6 +1,6 @@
 # product-title-cleaner
 
-A free Agent Skill that gives your whole Shopify catalog one consistent title pattern and hands you a CSV you can import as is.
+A free Agent Skill that gives your whole Shopify catalogue one consistent title pattern and hands you a CSV you can import as is.
 
 It works out the pattern most of your titles already follow. Then it fixes only the titles that break it:
 - promo words in titles (`NEW`, `SALE`, `Last Call`, `🔥`)
@@ -33,7 +33,7 @@ Give it a store URL, a collection URL, or a product export CSV.
 | `Ranger Shearling - Brown` | `Ranger Shearling Boot - Brown` | product type added (taken from the store's own product type, "Boots") |
 | `Studio  x Partner Court Sneaker - Bone` | `Studio x Partner Court Sneaker - Bone` | double space |
 
-On one 147-product coffee and merch catalog it changed 13 titles and left 134 alone.
+On one 147-product coffee and merch catalogue it changed 13 titles and left 134 alone.
 
 ## Install
 
@@ -51,4 +51,4 @@ Made by Pro Skill Packs. We tested this skill on real public Shopify stores befo
 
 The paid **Store Ops Pack** for Shopify store owners (AI-agent readiness audit for your store, product description rewriter, SEO fixer with collection pages, support macros, chargeback responses, BFCM campaign kit) is here: https://proskillpacks.gumroad.com
 
-Not affiliated with Shopify Inc.
+Not affiliated with or endorsed by Shopify Inc.
