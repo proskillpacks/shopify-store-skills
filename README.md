@@ -2,7 +2,7 @@
 
 Five free [Agent Skills](https://agentskills.io) for Shopify store owners. Each one does a single store chore from start to finish and gives you something you can paste or import into Shopify without editing.
 
-They work in Claude Code, claude.ai and any other agent that reads `SKILL.md` files. The helper scripts are plain Python 3 with no extra packages.
+They work with any AI assistant that reads `SKILL.md` files: Claude Code, claude.ai, OpenAI Codex, Gemini CLI, Cursor, GitHub Copilot and others. The helper scripts are plain Python 3 with no extra packages.
 
 | Skill | Give it | You get |
 |---|---|---|
