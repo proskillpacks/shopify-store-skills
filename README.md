@@ -87,6 +87,13 @@ We run every skill on real public Shopify stores, using their public product dat
 
 Nothing here posts or changes anything in your store. You review the output and apply it yourself.
 
+## Free pages for store owners
+
+Plain pages you can read and copy from, no install needed:
+
+- [Replies and templates for online store owners](https://proskillpacks.github.io/stores/): review replies, refund and delay emails, return policy wording.
+- [Chargeback checklists by reason](https://proskillpacks.github.io/free/chargeback-checklists/): what proof to gather before you answer a dispute.
+
 ## More skills
 
 These five are free under the MIT licence. Pro Skill Packs also sells tested skills for other jobs: store operations, marketing and SEO, freelancer client work, short-term rental hosts. The full list is at https://proskillpacks.github.io and https://proskillpacks.gumroad.com, and each skill is a plain `SKILL.md` that works in any assistant that reads the format.
